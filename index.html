@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FSC Claim Training</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #e0e7ff, #f1f5f9);
+}
+
+/* HEADER */
+header {
+  text-align: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* VIDEO BUTTON */
+.video-section {
+  text-align: center;
+  margin: 20px;
+}
+
+.video-btn {
+  background: linear-gradient(135deg, #dc2626, #ef4444);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 15px;
+  box-shadow: 0 8px 20px rgba(220,38,38,0.3);
+  transition: 0.3s;
+}
+
+.video-btn:hover {
+  transform: scale(1.08);
+}
+
+/* CONTAINER */
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* STEP CARD */
+.card {
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transform: translateY(20px);
+  opacity: 0;
+  animation: fadeUp 0.6s forwards;
+}
+
+.card:nth-child(1){animation-delay:0.1s}
+.card:nth-child(2){animation-delay:0.2s}
+.card:nth-child(3){animation-delay:0.3s}
+.card:nth-child(4){animation-delay:0.4s}
+.card:nth-child(5){animation-delay:0.5s}
+.card:nth-child(6){animation-delay:0.6s}
+
+@keyframes fadeUp {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* HEADER */
+.card-header {
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.card-title {
+  font-weight: 600;
+  color: #1e3a8a;
+}
+
+.step-badge {
+  background: #2563eb;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 50px;
+  font-size: 12px;
+}
+
+/* CONTENT */
+.card-content {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 15px;
+  transition: 0.4s ease;
+}
+
+.card.active .card-content {
+  max-height: 300px;
+  padding: 15px;
+}
+
+/* PROGRESS BAR */
+.progress {
+  height: 6px;
+  background: #ddd;
+}
+
+.progress-bar {
+  height: 6px;
+  width: 0%;
+  background: linear-gradient(90deg, #2563eb, #22c55e);
+  transition: 0.4s;
+}
+
+/* NOTE */
+.note {
+  background: #fff3cd;
+  padding: 15px;
+  border-left: 6px solid #ffc107;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+/* TABLE */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+th {
+  background: #2563eb;
+  color: white;
+}
+
+.badge {
+  padding: 4px 8px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+.pending {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.done {
+  background: #dcfce7;
+  color: #166534;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+🚗 FSC Claim Training System (HiRise + MSB)
+</header>
+
+<!-- VIDEO BUTTON -->
+<div class="video-section">
+  <a href="https://drive.google.com/file/d/1Pz93ncH4easIPMs4KNaWl-OaPfuc-6W2/view?usp=sharing" target="_blank" class="video-btn">
+    ▶ Watch Full Process Video
+  </a>
+</div>
+
+<!-- PROGRESS -->
+<div class="progress">
+  <div class="progress-bar" id="progressBar"></div>
+</div>
+
+<div class="container">
+
+<!-- STEPS -->
+<div class="card" onclick="openStep(this,1)">
+  <div class="card-header">
+    <div class="card-title">Open Service ID in HiRise</div>
+    <div class="step-badge">Step 1</div>
+  </div>
+  <div class="card-content">
+    HiRise portal open kare aur apni Service ID load kare.
+  </div>
+</div>
+
+<div class="card" onclick="openStep(this,2)">
+  <div class="card-header">
+    <div class="card-title">Claim Section & Data Load</div>
+    <div class="step-badge">Step 2</div>
+  </div>
+  <div class="card-content">
+    Claim → Consolidate FSC Claim par click kare.<br><br>
+    Invoice & Claim Statement me * ya invoice number daal kar search kare.
+  </div>
+</div>
+
+<div class="card" onclick="openStep(this,3)">
+  <div class="card-header">
+    <div class="card-title">Select Invoice</div>
+    <div class="step-badge">Step 3</div>
+  </div>
+  <div class="card-content">
+    Invoice select kare → Consolidate FSC Claim Attachments me jaye.<br>
+    Agar invoice na dikhe → query kare.
+  </div>
+</div>
+
+<div class="card" onclick="openStep(this,4)">
+  <div class="card-header">
+    <div class="card-title">Upload for Signature</div>
+    <div class="step-badge">Step 4</div>
+  </div>
+  <div class="card-content">
+    Refresh kare agar option na dikhe.<br>
+    Upload Invoice for Signature par click kare.
+  </div>
+</div>
+
+<div class="card" onclick="openStep(this,5)">
+  <div class="card-header">
+    <div class="card-title">MSB E-Sign Process</div>
+    <div class="step-badge">Step 5</div>
+  </div>
+  <div class="card-content">
+    MSB portal open hoga → login → Aadhaar submit kare → E-sign complete kare.
+  </div>
+</div>
+
+<div class="card" onclick="openStep(this,6)">
+  <div class="card-header">
+    <div class="card-title">Final Verification</div>
+    <div class="step-badge">Step 6</div>
+  </div>
+  <div class="card-content">
+    Refresh kare → 2 invoice dikhe → FSC claim complete.
+  </div>
+</div>
+
+<!-- NOTE -->
+<div class="note">
+  <b>Important Check:</b>
+  <table>
+    <tr>
+      <th>Check</th>
+      <th>Column</th>
+      <th>Status</th>
+    </tr>
+    <tr>
+      <td>MSB</td>
+      <td>Submission / Sign / Validation</td>
+      <td><span class="badge pending">Empty = Pending</span></td>
+    </tr>
+    <tr>
+      <td>MSB Done</td>
+      <td>Same</td>
+      <td><span class="badge done">Filled = Done</span></td>
+    </tr>
+    <tr>
+      <td>GST</td>
+      <td>GST Reco</td>
+      <td>Remarks check kare</td>
+    </tr>
+  </table>
+</div>
+
+</div>
+
+<script>
+function openStep(card, step){
+  document.querySelectorAll(".card").forEach(c => c.classList.remove("active"));
+  card.classList.add("active");
+
+  let percent = (step / 6) * 100;
+  document.getElementById("progressBar").style.width = percent + "%";
+}
+</script>
+
+</body>
+</html>
